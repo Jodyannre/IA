@@ -71,7 +71,9 @@ Elemento que permite rellenar un cuadro de texto en pantalla mediante una variab
 ##### Read Row Workbook
 
 Elemento que permite leer un hoja de excel por filas.
+
 ![elementos](./images/elemento06.png)
+
 ##### Send SMTP Mail Message
 Elemento que permite enviar correos electrónicos por medio de SMTP.
 ![elementos](./images/elemento07.png)
