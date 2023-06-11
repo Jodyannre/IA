@@ -3,11 +3,13 @@
 - Facultad de Ingeniería
 - Escuela de Ciencias y Sistemas
 - Auxiliar: Ana Isabel Culajay González
+- **Inteligencia artificial 1 - Sección A** 
 ---
-##### Inteligencia artificial 1 - Sección A 
+
 ## Datos
 
 | Carnet    | Nombre |
+|----------|----------|
 | 201115018 | Joel Rodríguez Santos |
 
 ---
@@ -67,6 +69,7 @@ Elemento que emula la función del mouse tanto para el click derecho como el izq
 Elemento que permite rellenar un cuadro de texto en pantalla mediante una variable o un texto explicitamente configurado.
 ![elementos](./images/elemento05.png)
 ##### Read Row Workbook
+
 Elemento que permite leer un hoja de excel por filas.
 ![elementos](./images/elemento06.png)
 ##### Send SMTP Mail Message
@@ -132,6 +135,10 @@ A continuación se presetan los elementos utilizados y los lugadores en donde fu
 ## Consulta y descarga de lugar de votación
 
 Para la consulta y descarga del lugar de votación se utilizaron solo los elementos "click" y "type into" para rellenar los cuadros de texto.
+
+![consulta](./images/constancia01.png)
+![consulta](./images/constancia02.png)
+![consulta](./images/constancia03.png)
 
 A continuación se presetan los elementos utilizados y los lugadores en donde fueron utilizados:
 
