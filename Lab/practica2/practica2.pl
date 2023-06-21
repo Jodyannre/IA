@@ -489,7 +489,7 @@ menu_criterio:-
     write('4. Clima'),nl,
     write('0. Salir'),nl,
     read(OpcionCriterio),cls,nl,
-    (((OpcionCriterio=0,false);(OpcionCriterio>4->cls,opcionIncorrecta,cls); (ejecutar(OpcionCriterio),cls)),menu_criterio).
+    (((OpcionCriterio=0,true);(OpcionCriterio>4->cls,opcionIncorrecta,cls,menu_criterio); (OpcionCriterio<5,OpcionCriterio>0,ejecutar(OpcionCriterio),cls,menu_criterio))).
 
 ejecutar(1):-
     /* Presupuesto */
@@ -533,7 +533,7 @@ menu_reportes :-
      -- Seleccione el reporte a visualizar --
      1. Reporte 1
      2. Reporte 2
-     3. Reporte 2
+     3. Reporte 3
      4. Reporte 4
      5. Reporte 5
      6. Reporte 6
@@ -545,6 +545,8 @@ menu_reportes :-
      '),
     read(Opcion),cls,
     (
+     (
+      (
      ((Opcion=1,encabezado(1),reporte1);(Opcion=1,pie,esperar));
      ((Opcion=2,encabezado(2),reporte2);(Opcion=2,pie,esperar));
      ((Opcion=3,encabezado(3),reporte3);(Opcion=3,pie,esperar));
@@ -553,10 +555,10 @@ menu_reportes :-
      ((Opcion=6,encabezado(6),reporte6);(Opcion=6,pie,esperar));
      ((Opcion=7,encabezado(7),reporte7);(Opcion=7,pie,esperar));
      ((Opcion=8,encabezado(8),reporte8);(Opcion=8,pie,esperar));
-     ((Opcion=9,encabezado(9),reporte9);(Opcion=9,pie,esperar));
-     (Opcion=0->false);
-     (opcionIncorrecta,cls,menu_reportes)
-    ),cls,menu_reportes.
+     ((Opcion=9,encabezado(9),reporte9);(Opcion=9,pie,esperar))),cls,menu_reportes);
+     (Opcion=0,true);
+     ((Opcion>9,opcionIncorrecta,cls,menu_reportes))
+    ).
 
 
 % ---------------------------- CAMINOS -----------------------------------

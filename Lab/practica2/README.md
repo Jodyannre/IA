@@ -117,7 +117,7 @@ Los caminos serán explicados más adelante en el diagrama de encadenamiento, pe
 Luego de ingresar una de las opciones que se les solicita en cada regla se procederá a ejecutar una serie de caminos predefinidos, los cuales se verán a continuación
 
 
-#### Caminos
+### Caminos
 
 ![recomendacion](./images/recomentacion02.png)
 
