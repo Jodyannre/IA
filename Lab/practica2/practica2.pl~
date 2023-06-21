@@ -489,7 +489,7 @@ menu_criterio:-
     write('4. Clima'),nl,
     write('0. Salir'),nl,
     read(OpcionCriterio),cls,nl,
-    (((OpcionCriterio=0,false);(OpcionCriterio>4->cls,opcionIncorrecta,cls,menu_criterio); (OpcionCriterio<5,OpcionCriterio>0,ejecutar(OpcionCriterio),cls,menu_criterio))).
+    (((OpcionCriterio=0,true);(OpcionCriterio>4->cls,opcionIncorrecta,cls,menu_criterio); (OpcionCriterio<5,OpcionCriterio>0,ejecutar(OpcionCriterio),cls,menu_criterio))).
 
 ejecutar(1):-
     /* Presupuesto */
@@ -962,7 +962,7 @@ reporte1 :-
     cliente(IdCliente,NombreCliente,Apellido,Pais,_,_,_),
     hotel(IdHotel,NombreHotel,_,_,_,_,_,_,_),
     /*Filtros*/
-    Opinion>=5,
+    Opinion>5,
     not_in(Pais,['Guatemala','El Salvador','Honduras','USA',
                  'Mexico','Venezuela','Costa Rica']),
     /*Impresion*/

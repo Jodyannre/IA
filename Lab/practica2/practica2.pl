@@ -962,7 +962,7 @@ reporte1 :-
     cliente(IdCliente,NombreCliente,Apellido,Pais,_,_,_),
     hotel(IdHotel,NombreHotel,_,_,_,_,_,_,_),
     /*Filtros*/
-    Opinion>=5,
+    Opinion>5,
     not_in(Pais,['Guatemala','El Salvador','Honduras','USA',
                  'Mexico','Venezuela','Costa Rica']),
     /*Impresion*/
@@ -1056,7 +1056,7 @@ reporte7 :-
     departamento(IdDepto,_,_,Idioma,_,_),
     /*Filtros*/
     Nacionalidad\='Guatemala',
-    Estadia=<2,
+    Estadia<2,
     Idioma='ingles',
     /*Impresión*/
     format('
