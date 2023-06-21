@@ -19,13 +19,16 @@
 * [Objetivos](#objetivos)
 * [Conclusiones](#conclusiones)
 * [Solución](#solución)
-    * [Inicio de transmisión](#inicio-de-transmisión-en-facebook)
-    * [Verificar empadronamiento](#verificación-de-empadronamiento)
-    * [Consulta y descarga de lugar de votación](#consulta-y-descarga-de-lugar-de-votación)
-    * [Finalización de transmisión](#finalización-de-la-transmisión-de-facebook)
-* [Opinión](#opinión)
-* [Usos profesionales](#usos-profesionales)
-* [Usos cotidianos](#usos-cotidianos)
+    * [Declaración de hechos](#declaración-de-hechos)
+    * [Menús](#menus)
+    * [Búsqueda de hoteles](#búsqueda-de-hoteles)
+    * [Caminos](#caminos)
+    * [Impresión de resultados](#impresión-de-resultados)
+    * [Reglas auxiliares](#reglas-auxiliaresk)
+    * [Reportes](#reportes)
+    * [Encabezados](#encabezados)
+* [Diagrama de encadenamiento](#diagrama-de-encadenamiento)
+* [Explicación del diagrama de encadenamiento](#explicación-del-diagrama)
 
 
 ---
