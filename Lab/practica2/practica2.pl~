@@ -468,7 +468,7 @@ menu_loop :-
     write('Ingrese su opción: '),
     read(Opcion),
     cls,
-    ejecutar_opcion(Opcion),
+    ((Opcion > 2-> cls,opcionIncorrecta,cls); ejecutar_opcion(Opcion)),
     (Opcion = 0; menu_loop).
 
 ejecutar_opcion(1) :-
@@ -489,7 +489,7 @@ menu_criterio:-
     write('4. Clima'),nl,
     write('0. Salir'),nl,
     read(OpcionCriterio),cls,nl,
-    ((OpcionCriterio=0,false);(ejecutar(OpcionCriterio),menu_criterio)).
+    (((OpcionCriterio=0,false);(OpcionCriterio>4->cls,opcionIncorrecta,cls); (ejecutar(OpcionCriterio),cls)),menu_criterio).
 
 ejecutar(1):-
     /* Presupuesto */
@@ -549,12 +549,13 @@ menu_reportes :-
      ((Opcion=2,encabezado(2),reporte2);(Opcion=2,pie,esperar));
      ((Opcion=3,encabezado(3),reporte3);(Opcion=3,pie,esperar));
      ((Opcion=4,encabezado(4),reporte4);(nl,Opcion=4,encabezado(42),reporte42);(Opcion=4,pie,esperar));
-     Opcion=5->write('Reporte 5 \n');
-     Opcion=6->write('Reporte 6 \n');
-     Opcion=7->write('Reporte 7 \n');
-     Opcion=8->write('Reporte 8 \n');
-     Opcion=9->write('Reporte 9 \n');
-     Opcion=0->false
+     ((Opcion=5,encabezado(5),reporte5);(Opcion=5,pie,esperar));
+     ((Opcion=6,encabezado(6),reporte6);(Opcion=6,pie,esperar));
+     ((Opcion=7,encabezado(7),reporte7);(Opcion=7,pie,esperar));
+     ((Opcion=8,encabezado(8),reporte8);(Opcion=8,pie,esperar));
+     ((Opcion=9,encabezado(9),reporte9);(Opcion=9,pie,esperar));
+     (Opcion=0->false);
+     (opcionIncorrecta,cls,menu_reportes)
     ),cls,menu_reportes.
 
 
@@ -672,11 +673,11 @@ presupuestoMedio:-
      calcularPresupuesto(2,Dias,Habitacion,Personas,Vehiculo,Distancia,Comida,PasajeMaximo,TiemposComida);esperar.
 
 presupuestoVIP:-
-     paso3(Habitacion),cls,
      paso4(Personas),cls,
      paso2(Dias),cls,
-     paso7(Comida),cls,
      paso5(Vehiculo),cls,
+     paso3(Habitacion),cls,
+     paso7(Comida),cls,
      PasajeMaximo is 0,
      TiemposComida is 3,
      Distancia is 0,
@@ -838,11 +839,11 @@ calorTropical(Seleccion):-
 frioTemplado(Seleccion):-
     Clima = Seleccion,
     paso5(Vehiculo),cls,
+    paso2(Dias),cls,
     paso4(Personas),cls,
+    paso8(Idioma),cls,
     paso6(Distancia),cls,
     paso3(Habitacion),cls,
-    paso8(Idioma),cls,
-    paso2(Dias),cls,
     paso7(Comida),cls,
     calcularClima(Clima,Dias,Habitacion,Distancia,0,
                    Personas,Vehiculo,Comida,0,Idioma); esperar.
@@ -901,7 +902,18 @@ sumarTotalesPr(si,TotalCosto,_,TotalGasolina,TotalHabitaciones,TotalComida):-
 not_in(Elemento, Lista) :-
     not(member(Elemento, Lista)).
 
+contarHotelesCalor(IdHotel, Cantidad) :-
+    findall(_, registro(_, _, IdHotel, _, _, _), Registros),
+    length(Registros, Cantidad).
 
+contarDeptosCalor(IdDepto, Cantidad) :-
+    findall(_, hotel(_, _, _, _, _, _, _, IdDepto, _), Registros),
+    length(Registros, Cantidad).
+
+
+opcionIncorrecta :-
+    cls,
+    writeln('Ingreso una opción no válida. \n Por favor ingrese una opción válida para continuar.'), esperar.
 
 % -------------------------- Impresion ------------------------------------
 
@@ -940,7 +952,7 @@ printResultado(si,Hotel,Ndepto,Direccion,TotalGasolina,_,
     fail.
 
 
-% -------------------------- Reporte 1 ------------------------------------
+% -------------------------- Reportes ------------------------------------
 
 reporte1 :-
     /*write('Reporte 1'),nl,*/
@@ -958,6 +970,7 @@ reporte1 :-
 
 
 reporte2 :-
+    /*Datos*/
     registro(_,IdCliente,IdHotel,_,_,_),
     cliente(IdCliente,NombreCliente,Apellido,_,_,EstadoCivil,_),
     hotel(IdHotel,NombreHotel,_,Estrellas,_,_,_,_,_),
@@ -969,40 +982,112 @@ reporte2 :-
     [NombreCliente,Apellido,EstadoCivil,NombreHotel,Estrellas]),fail.
 
 reporte3 :-
+    /*Datos*/
     hotel(IdHotel,NombreHotel,_,_,_,_,_,_,_),
     trabajador(_,NombreTrabajador,Cargo,IdHotel),
     registro(_,_,IdHotel,_,_,Opinion),
+    /*Filtros*/
     Cargo='Administrador',
     Opinion>=5,
+    /*Impresión*/
     format('
     ~a ~15+ \t~a    \t~a',
     [NombreTrabajador,NombreHotel,Opinion]),fail.
 
 reporte4 :-
+    /*Datos*/
     hotel(IdHotel,NombreHotel,_,_,_,_,_,IdDepto,_),
     departamento(IdDepto,NombreDepto,_,_,Clima,_),
     contarHotelesCalor(IdHotel,Cantidad),
+    /*Filtros*/
     Clima='calor',
+    /*Impresión*/
     format('
     ~a ~15+ \t~a~22+ \t~a',
     [NombreHotel,NombreDepto,Cantidad]),fail.
 
 reporte42 :-
+    /*Datos*/
     departamento(IdDepto,NombreDepto,_,_,Clima,_),
     contarDeptosCalor(IdDepto,Cantidad),
+    /*Filtros*/
     Clima='calor',
+    /*Impresión*/
     format('
     ~a ~15+ \t~a',
     [NombreDepto,Cantidad]),fail.
 
 
-contarHotelesCalor(IdHotel, Cantidad) :-
-    findall(_, registro(_, _, IdHotel, _, _, _), Registros),
-    length(Registros, Cantidad).
+reporte5 :-
+    /*Datos*/
+    cliente(IdCliente,NombreCliente,Apellido,Nacionalidad,_,_,_),
+    registro(_,IdCliente,IdHotel,_,_,_),
+    hotel(IdHotel,NombreHotel,_,_,_,_,_,IdDepto,_),
+    departamento(IdDepto,_,_,Idioma,_,_),
+    /*Filtros*/
+    Nacionalidad\='Guatemala',
+    Idioma='espanol',
+    /*Impresión*/
+    format('
+    ~a ~15+ \t~a ~15+ \t ~a ',
+    [NombreCliente,Apellido,NombreHotel]),fail.
 
-contarDeptosCalor(IdDepto, Cantidad) :-
-    findall(_, hotel(_, _, _, _, _, _, _, IdDepto, _), Registros),
-    length(Registros, Cantidad).
+reporte6 :-
+    /*Datos*/
+    registro(_,IdCliente,IdHotel,_,Estadia,Opinion),
+    cliente(IdCliente,NombreCliente,Apellido,_,_,_,_),
+    hotel(IdHotel,NombreHotel,_,_,_,_,_,IdDepto,_),
+    departamento(IdDepto,NombreDepto,_,Idioma,_,_),
+    /*Filtros*/
+    Opinion>=7,
+    Estadia>=3,
+    /*Impresión*/
+    format('
+    ~a ~15+ \t~a ~15+ \t ~a \t ~a ~a',
+    [NombreHotel,NombreDepto,Idioma,NombreCliente,Apellido]),fail.
+
+reporte7 :-
+    /*Datos*/
+    registro(_,IdCliente,IdHotel,_,Estadia,_),
+    cliente(IdCliente,NombreCliente,Apellido,Nacionalidad,_,_,_),
+    hotel(IdHotel,NombreHotel,_,_,_,_,_,IdDepto,_),
+    departamento(IdDepto,_,_,Idioma,_,_),
+    /*Filtros*/
+    Nacionalidad\='Guatemala',
+    Estadia=<2,
+    Idioma='ingles',
+    /*Impresión*/
+    format('
+    ~a ~15+ \t~a ~15+ \t~a ~a',
+    [Nacionalidad,NombreHotel,NombreCliente,Apellido]),fail.
+
+reporte8 :-
+    /*Datos*/
+    registro(_,IdCliente,IdHotel,_,_,_),
+    cliente(IdCliente,NombreCliente,Apellido,Nacionalidad,_,_,_),
+    hotel(IdHotel,_,_,_,_,_,_,IdDepto,_),
+    departamento(IdDepto,NombreDepto,_,_,_,_),
+    /*Filtros*/
+    NombreDepto='Peten',
+    /*Impresión*/
+    format('
+    ~a ~15+ \t~a ~a',
+    [Nacionalidad, NombreCliente, Apellido]),fail.
+
+
+reporte9 :-
+    /*Datos*/
+    registro(_,IdCliente,IdHotel,_,Estadia,Opinion),
+    cliente(IdCliente,NombreCliente,Apellido,_,_,EstadoCivil,_),
+    hotel(IdHotel,NombreHotel,Direccion,_,_,_,_,_,_),
+    /*Filtros*/
+    EstadoCivil='Casado',
+    Opinion>6,
+    Estadia>=3,
+    /*Impresión*/
+    format('
+    ~a ~15+ \t~a ~15+ \t~a ~a',
+    [NombreHotel, Direccion, NombreCliente,Apellido]),fail.
 
 
 % -------------------------- Encabezados ------------------------------------
@@ -1037,6 +1122,35 @@ encabezado(42):-
     Depto.    ~15+ \tReservaciones
     -----------------------------------------------------------------').
 
+encabezado(5):-
+    format('
+    ----------------------------Reporte 5----------------------------
+    Nombre    ~15+ \tApellido  ~15+  \tHotel
+    -----------------------------------------------------------------').
+
+encabezado(6):-
+    format('
+    ----------------------------Reporte 6----------------------------
+    Hotel    ~15+ \tDepto  ~15+  \tIdioma  \tCliente
+    -----------------------------------------------------------------').
+
+encabezado(7):-
+    format('
+    ----------------------------Reporte 7----------------------------
+    País    ~15+ \tHotel  ~15+  \tCliente
+    -----------------------------------------------------------------').
+
+encabezado(8):-
+    format('
+    ----------------------------Reporte 8----------------------------
+    País    ~15+ \tCliente
+    -----------------------------------------------------------------').
+
+encabezado(9):-
+    format('
+    ----------------------------Reporte 9----------------------------
+    Hotel    ~15+ \tDirección ~15+ \tCliente
+    -----------------------------------------------------------------').
 
 pie:-
     format('
