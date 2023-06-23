@@ -1,0 +1,83 @@
+[33mcommit 6077421800d7ec770fcbf1f547cc3dd0c123c9fc[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Tue Jun 20 23:10:50 2023 -0600
+
+    Se arreglo nombre de archivo
+
+[33mcommit 6ae30673b6990c72185d402aec84e3d2883a4bf8[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Tue Jun 20 23:07:39 2023 -0600
+
+    Menú md arreglado
+
+[33mcommit 3596590ad9355a22b9b7d36bd4c5ca61a80086bb[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Tue Jun 20 23:03:09 2023 -0600
+
+    Reporte 7 arreglado
+
+[33mcommit 1385057b5c10fd8c0dfdb20bd332f84d396c0fd9[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Tue Jun 20 21:59:25 2023 -0600
+
+    Se arreglaron salidas falsas de menus.
+
+[33mcommit db1b1b9d4d396a75100bc5aaba2bc38941c5f071[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Tue Jun 20 21:18:37 2023 -0600
+
+    Se agrego la documentación y se modificaron algunos caminos
+
+[33mcommit ccbd14706a8a578a0bd8863ddb5fa155588099ec[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Mon Jun 19 18:47:56 2023 -0600
+
+    Se agregaron algoritmos a clase y practica 2 al lab
+
+[33mcommit ca28d21584de4bc7f2ff4a97850c2118418d3ff2[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Mon Jun 12 17:34:12 2023 -0600
+
+    Aumento de delay para el directo en fb
+
+[33mcommit d4fe668a8c21ba05cc3dc775ec19aef957431671[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Mon Jun 12 01:23:46 2023 -0600
+
+    Algoritmos de unidad 2 y 3
+
+[33mcommit a6342d7d77365191181e5820d842fac37b68dece[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Sun Jun 11 13:34:28 2023 -0600
+
+    Se arreglaron referencias perdidas en la finalización de transmisión
+
+[33mcommit b773202073283b2da4e7bede485d6a1426f7a26c[m
+Author: Jodyannre <36574879+Jodyannre@users.noreply.github.com>
+Date:   Sun Jun 11 12:39:58 2023 -0600
+
+    Update README.md
+
+[33mcommit 1514584d3b077572e5b22cc8f39f55df916f0f53[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Sun Jun 11 12:38:12 2023 -0600
+
+    Se arreglo problema con espacios en documentación
+
+[33mcommit a37bbd7c61f39147781dd3589c110f4311596edb[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Sun Jun 11 12:27:12 2023 -0600
+
+    Se agrego la documentación
+
+[33mcommit 2b9504b19233a4720b5e24114f5c431956ba49ab[m
+Author: Joddie <Jers.033@gmail.com>
+Date:   Sun Jun 11 09:57:47 2023 -0600
+
+    Se agregaron archivos de uipath de la practica
+
+[33mcommit 311f87fa1dede890576a44b135d52c7ab380f2d2[m
+Author: Jodyannre <36574879+Jodyannre@users.noreply.github.com>
+Date:   Mon Jun 5 09:14:45 2023 -0600
+
+    Initial commit
