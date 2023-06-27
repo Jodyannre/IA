@@ -21,8 +21,8 @@ def sucesores(n,s,nivel,correlativo,padre):
             [n[0]+n[2]+n[1]+n[3],algoritmo(n[0]+n[2]+n[1]+n[3],s),nivel+1,correlativo,0],
             [n[0]+n[1]+n[3]+n[2],algoritmo(n[0]+n[1]+n[3]+n[2],s),nivel+1,correlativo,0],]
     for hijo in result:
-        hijo[4]=padre[4]+hijo[1]
-        hijo[1]=hijo[1]+hijo[4]
+        #hijo[4]=padre[4]+hijo[1]
+        hijo[1]=hijo[1]+hijo[2]
     return result
 
 
@@ -104,9 +104,9 @@ def ejecutarAlgoritmo():
         heuristicaEsperanza
     '''
     global algoritmo,nodoFinal
-    nodoFinal = "ABCD"
+    nodoFinal = "1234"
     algoritmo = heuristicaCasillasFueraLugar
-    bestfirst("DCBA","ABCD")
+    bestfirst("2314","1234")
 
 
 ejecutarAlgoritmo()

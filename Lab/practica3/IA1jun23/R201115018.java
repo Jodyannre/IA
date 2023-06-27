@@ -1,4 +1,4 @@
-package primerRobot;
+package IA1jun23;
 import robocode.AdvancedRobot;
 import robocode.HitRobotEvent;
 import robocode.ScannedRobotEvent;
@@ -8,13 +8,14 @@ import robocode.util.Utils;
 import static robocode.util.Utils.normalRelativeAngleDegrees;
 import java.util.Vector;
 import java.util.concurrent.ThreadLocalRandom;
-
+//import java.awt.Color;
 
 // API help : https://robocode.sourceforge.io/docs/robocode/robocode/Robot.html
 
-
-
-public class Prueba1 extends AdvancedRobot{ 
+/**
+ * R201115018 - a robot by (your name here)
+ */
+public class R201115018 extends AdvancedRobot{
 	int distancia = 100; // distancia que se mueve despues de un disparo recibido.
 	int nadieCerca = 0;
 	int direccionRombo = 0;
@@ -30,27 +31,14 @@ public class Prueba1 extends AdvancedRobot{
 	private static final int ESTRATEGIA_CRAZY = 4;
 	private static final int DISTANCIA_BORDE = 200; // Distancia mínima al borde para considerarlo cercano
 	private static final double DISTANCIA_CERCA = 100; // Distancia mínima para considerar que está cerca de otro robot
-	boolean peek; // Don't turn if there's a robot there
-	double moveAmount; // How much to move
-	/**
-	 * run:  Fire's main run function
-	 */
+	boolean peek; 
+	double moveAmount; 
+
 	public void run() {
 		// Set colors
 
 		setColors();
 		//moverHaciaCentro();
-		/*
-		moveAmount = Math.max(getBattleFieldWidth(), getBattleFieldHeight());
-		peek = false;
-		turnLeft(getHeading() % 90);
-		ahead(moveAmount);
-		peek = true;
-		turnGunRight(90);
-		turnRight(90);
-		*/
-		
-		// Spin the gun around slowly... forever
 		while (true) {
 			fire(1);
 			nadieCerca++;
@@ -82,9 +70,7 @@ public class Prueba1 extends AdvancedRobot{
 		scan();
 	}
 
-	/**
-	 * onHitByBullet:  Turn perpendicular to the bullet, and move a bit.
-	 */
+
 	public void onHitByBullet(HitByBulletEvent e) {
 		// Lógica cuando se recibe un disparo
 		disparosRecibidos++;
@@ -265,23 +251,17 @@ public class Prueba1 extends AdvancedRobot{
     }
     
     private void estrategiaCirculo() {
-		// Tell the game that when we take move,
-		// we'll also want to turn right... a lot.
 		setTurnRight(1000);
-		// Limit our speed to 5
+		// Limitar velocidad para que haga los circulos
 		setMaxVelocity(5);
-		// Start moving (and turning)
 		ahead(1000);
 		// Repeat.
     }
     
     private void estrategiaWall() {
     	peek = true;
-		// Move up the wall
 		ahead(moveAmount);
-		// Don't look now
 		peek = false;
-		// Turn to the next wall
 		turnRight(90);
     }
     
@@ -308,26 +288,10 @@ public class Prueba1 extends AdvancedRobot{
     private void moverCrazy() {
     	setAhead(10000);
 		movingForward = true;
-		// Tell the game we will want to turn right 90
 		setTurnRight(90);
-		// At this point, we have indicated to the game that *when we do something*,
-		// we will want to move ahead and turn right.  That's what "set" means.
-		// It is important to realize we have not done anything yet!
-		// In order to actually move, we'll want to call a method that
-		// takes real time, such as waitFor.
-		// waitFor actually starts the action -- we start moving and turning.
-		// It will not return until we have finished turning.
 		waitFor(new TurnCompleteCondition(this));
-		// Note:  We are still moving ahead now, but the turn is complete.
-		// Now we'll turn the other way...
 		setTurnLeft(180);
-		// ... and wait for the turn to finish ...
-		//waitFor(new TurnCompleteCondition(this));
-		// ... then the other way ...
-		//setTurnRight(180);
-		// .. and wait for that turn to finish.
-		//waitFor(new TurnCompleteCondition(this));
-		// then back to the top to do it all again
+
     }
     
     /*
