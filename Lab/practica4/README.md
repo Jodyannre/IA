@@ -19,16 +19,13 @@
 * [Objetivos](#objetivos)
 * [Conclusiones](#conclusiones)
 * [Solución](#solución)
-    * [Declaración de hechos](#declaración-de-hechos)
-    * [Menús](#menus)
-    * [Búsqueda de hoteles](#búsqueda-de-hoteles)
-    * [Caminos](#caminos)
-    * [Impresión de resultados](#impresión-de-resultados)
-    * [Reglas auxiliares](#reglas-auxiliaresk)
-    * [Reportes](#reportes)
-    * [Encabezados](#encabezados)
-* [Diagrama de encadenamiento](#diagrama-de-encadenamiento)
-* [Explicación del diagrama de encadenamiento](#explicación-del-diagrama)
+    * [Targets](#targets)
+    * [Estructura utilizada en Unity](#estructura-utilizada-en-unity)
+    * [Vistas preliminares de las interfaces](#vistas-preliminares-de-las-interfaces)
+    * [Tabla de elementos por carrera y curso](#tabla-de-elementos-por-carrera-y-curso)
+    * [Opinión de Vuforia](#opinión-de-vuforia))
+    * [Usos prácticos de la realidad aumentada en su vida cotidiana](#usos-prácticos-de-la-realidad-aumentada-en-su-vida-cotidiana)
+    * [Usos prácticos de la realidad aumentada en su vida laboral](#usos-prácticos-de-la-realidad-aumentada-en-su-vida-laboral)
 
 
 ---
@@ -36,7 +33,7 @@
 ## Objetivos
 
 ### General
-* Diseñar un una solución de realidad virtual para el manejo de información de 25 cursos de la carrera de ingeniería en la USAC
+* Diseñar un una solución de realidad virtual para el manejo de información de 25 cursos de distintas especialidades de la carrera de ingeniería en la USAC
 
 ### Específicos
 * Diseñar las interfaces utilizando Unity y Vuforia
@@ -61,8 +58,8 @@ Gráficos
 - DX10, DX11, y DX12-capable GPUs
 
 
-*El programa pesa 42KB y utiliza un máximo de 14MB en ejecución*
-![requisitos](./images/requisitos.png)
+*El programa en ejecución utiliza más de 1gb de ram y hasta el 14% de una tarjeta gráfica dedica de la generación de 2040*
+![requisitos](./images/uso.png)
 
 
 ---
@@ -143,7 +140,7 @@ Los elementos 3d también fueron agregados como hijos de elementos "planes" para
 ![civil](./images/civil.png)
 ![industrial](./images/industrial.png)
 
-Se utilizaron 2 posiciones para los botones, en la parte superior e inferior de la pantalla. Se agregaron 5 juegos de paneles con resultados al clickar cualquiera de las opciones de botones que hay de tal manera de que se muestrne los datos programados y se reproduzcan los multimedia agregados.
+Se utilizaron 2 posiciones para los botones virtuales, en la parte superior e inferior de la pantalla ya que eran los lugares donde se presentaba mejor disposiciones de "features" además de que son lugares donde no estorban para los demás componentes que se van a mostrar por las acciones de los botones. Se agregaron 5 juegos de paneles con resultados al clickar cualquiera de las opciones de botones que hay de tal manera de que se muestrne los datos programados y se reproduzcan los multimedia agregados.
 
 #### Tabla de elementos por carrera y curso 
 
