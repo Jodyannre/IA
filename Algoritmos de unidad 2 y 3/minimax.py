@@ -39,4 +39,4 @@ def minimax(node,depth,m):
 		return node
 	
     
-print(minimax(["A",0,""],2,True))
+print(minimax(["A",1,""],2,True))
